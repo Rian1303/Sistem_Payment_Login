@@ -1,0 +1,26 @@
+
+print('{:=^40}'.format('PAYMENT SISTEM'))
+prec = float(input('Enter the price of the product: $'))
+print('''PAYMENT METHODS
+[1] cash/check
+[2] credit card
+[3] 2x in credit card
+[4] 3x tree or more in credit card''')
+condit = int(input(Your Option: '))
+if condit == 1:
+  nprec = prec-(prec* 10 / 100)
+  print(nprec)
+elif condit == 2:
+    cprec = prec-(prec*10/100) #preço a vista no cartão
+    print(cprec)
+elif condit == 3:
+    cprec2 = prec/2 #preço em 2 vezes no cartão
+    print(f'Your purchase of {prec} in 2 installments is {cprec2} INTEREST FREE.')
+elif condit == 4:
+    cprec3 = prec+(prec*20/100)
+    totparc = int(input('Quantas parcelas?'))
+    parcelas = cprec3 / totparc
+    print(f'Your purchase of R${prec} in {totparc} installments is {parcelas} WITH INTEREST.')
+else:
+    print('Forma de pagamento invalida')
+print('{:=^20}'.format('FIM'))
