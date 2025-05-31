@@ -1,0 +1,60 @@
+def get_username():
+    return 'Rian_Pluma'
+
+
+def get_master_password():
+    return 'test_senha01'
+
+
+username = get_username()
+password = get_master_password()
+
+# Login Loop
+while True:
+    username_input = input('Enter your USERNAME: ')
+    password_input = input('Enter your PASSWORD: ')
+
+    if username_input == username and password_input == password:
+        print(f'Access Granted! Welcome {username}!!')
+        break
+    else:
+        print('Access Denied! Try Again.')
+
+# Menu
+while True:
+    print("\n===== MENU =====")
+    print("1 - Change password")
+    print("2 - Show password")
+    print("3 - Show username")
+    print("0 - Exit")
+
+    option = input("Choose an option: ")
+
+    if option == '1':
+        current_password = input("Confirm your current password: ")
+        if current_password == password:
+            new_password = input("Enter the new password: ")
+            if new_password == password:
+                print("Your new password cannot be the same as the old one.")
+            else:
+                password = new_password
+                print("Password changed successfully.")
+        else:
+            print("Incorrect password. Password not changed.")
+
+    elif option == '2':
+        password_confirm = input("Enter your password: ")
+        if password_confirm == password:
+            print(f"Your password is: {password}")
+        else:
+            print("Incorrect password.")
+
+    elif option == '3':
+        print(f"Username: {username}")
+
+    elif option == '0':
+        print("Exiting... See you later!")
+        break
+
+    else:
+        print("Invalid option. Try again.")
