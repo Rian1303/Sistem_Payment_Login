@@ -33,8 +33,12 @@ class LoginSystem:
         if username == self.correct_username and password == self.correct_password:
             messagebox.showinfo("Access Granted", f"Welcome {username}!")
             self.create_menu()
-        else:
-            messagebox.showerror("Access Denied", "Incorrect username or password.")
+        elif username == self.correct_username and password != self.correct_password:
+            messagebox.showerror("Access Denied", "Incorrect password.")
+        elif username != self.correct_username and password == self.correct_password:
+            messagebox.showerror("Access Denied", "Incorrect username.")
+        else: 
+            messagebox.showerror("Access Denied", "Incorrect username and password.")
 
     def create_menu(self):
         self.clear_screen()
@@ -74,7 +78,7 @@ class LoginSystem:
 
         tk.Label(self.root, text="PAYMENT SYSTEM", font=("Arial", 12)).pack(pady=5)
 
-        tk.Label(self.root, text="Enter the product price (R$):").pack()
+        tk.Label(self.root, text="Enter the product price ($):").pack()
         self.entry_price = tk.Entry(self.root)
         self.entry_price.pack()
 
@@ -102,19 +106,19 @@ class LoginSystem:
 
             if option == "1":
                 total = price * 0.90
-                message = f"Total with 10% discount: R${total:.2f}"
+                message = f"Total with 10% discount: ${total:.2f}"
             elif option == "2":
                 total = price * 0.90
-                message = f"Total with 10% discount on card: R${total:.2f}"
+                message = f"Total with 10% discount on card: ${total:.2f}"
             elif option == "3":
                 installment = price / 2
-                message = f"2x of R${installment:.2f} WITHOUT INTEREST"
+                message = f"2x of ${installment:.2f} WITHOUT INTEREST"
             elif option == "4":
                 total = price * 1.20
                 installments = simpledialog.askinteger("Installments", "How many installments?")
                 if installments and installments > 0:
                     installment_value = total / installments
-                    message = f"{installments}x of R${installment_value:.2f} WITH INTEREST (Total: R${total:.2f})"
+                    message = f"{installments}x of ${installment_value:.2f} WITH INTEREST (Total: ${total:.2f})"
                 else:
                     messagebox.showerror("Error", "Invalid number of installments.")
                     return
@@ -136,3 +140,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = LoginSystem(root)
     root.mainloop()
+# This code implements a simple login system with a payment feature using Tkinter.
